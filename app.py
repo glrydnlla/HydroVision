@@ -16,6 +16,7 @@ from simulation import (
 import tutorial
 import ui
 import io
+from datetime import datetime
 
 st.set_page_config(page_title="HydroVision", layout="wide")
 
@@ -168,7 +169,7 @@ else:
                 st.download_button(
                     label="Download Plot 1 as PNG",
                     data=buf1,
-                    file_name="concentration_at_target_point_.png",
+                    file_name=f"concentration_at_target_point_{datetime.now().strftime("%Y%m%d_%H%M%S")}.png",
                     mime="image/png",
                     use_container_width=True
                 )
@@ -178,7 +179,7 @@ else:
                 st.download_button(
                     label="Download Plot 2 as PNG",
                     data=buf2,
-                    file_name="concentration_at_y_across_x_.png",
+                    file_name=f"concentration_at_y_across_x_{datetime.now().strftime("%Y%m%d_%H%M%S")}.png",
                     mime="image/png",
                     use_container_width=True
                 )
@@ -223,7 +224,7 @@ else:
                             st.download_button(
                                 "Download GIF File",
                                 data=gif_bytes,
-                                file_name="animation.gif",
+                                file_name=f"animation_{datetime.now().strftime("%Y%m%d_%H%M%S")}.gif",
                                 mime="image/gif",
                                 use_container_width=True,
                                 type="secondary"

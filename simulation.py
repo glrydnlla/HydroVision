@@ -4,8 +4,6 @@ import plotly.graph_objects as go
 import streamlit as st
 import io
 import imageio
-from datetime import datetime
-import imageio.v3 as iio
 
 def get_uv(u0, v0, a, b, x_grid, y_grid):
   # print(x_grid[0], " ", x_grid[-1])
