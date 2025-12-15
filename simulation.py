@@ -299,13 +299,13 @@ def show_animation(c, dt_max, x_grid, y_grid):
     step = 10
     fig.update_xaxes(
         tickmode="array",
-        tickvals=list(range(0, nx, step)),
-        ticktext=[f"{x_grid[i]:.2f}" for i in range(0, nx, step)]
+        tickvals=list(range(0, len(x_grid), step)),
+        ticktext=[f"{x_grid[i]:.2f}" for i in range(0, len(x_grid), step)]
     )
     fig.update_yaxes(
         tickmode="array",
-        tickvals=list(range(0, ny, step)),
-        ticktext=[f"{y_grid[::-1][i]:.2f}" for i in range(0, ny, step)]
+        tickvals=list(range(0, len(y_grid), step)),
+        ticktext=[f"{y_grid[::-1][i]:.2f}" for i in range(0, len(y_grid), step)]
     )
 
 
