@@ -17,7 +17,7 @@ import tutorial
 import ui
 import io
 
-st.set_page_config(page_title="Dispersion App", layout="wide")
+st.set_page_config(page_title="HydroVision", layout="wide")
 
 st.markdown(
     """
