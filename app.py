@@ -52,7 +52,6 @@ else:
         st.write("")
 
         if st.button("Analyze and Run Simulation", use_container_width=True, type="primary"):
-            st.session_state.analyzed = True
             if "animation_gif" in st.session_state:
                 del st.session_state["animation_gif"]
             grid_x = int(params['grid_x'])
@@ -84,6 +83,7 @@ else:
 
             if not stable:
                 st.error(f"Computed delta_t is unstable with the CFL value of {CFL} and delta t limit of {dt_diff_limit}. Adjust parameters. You can refer to the advection and diffusion stability formula below.\n\nAdvection (Courant–Friedrichs–Lewy condition):\n\n\t{advection}\n\nDiffusion stability:\n\n\t{diffusion}")
+                st.session_state.analyzed = False
             else:
                 c[0, :, :] = np.ones_like(c[0, :, :]) * params.get('c_in', 0.1)
                 xt = params['xt']
@@ -100,6 +100,7 @@ else:
                 buf2 = io.BytesIO()
                 fig2.savefig(buf2, format="png")
                 buf2.seek(0)
+                st.session_state.analyzed = True
 
                 st.session_state.xi = params['x0']
                 st.session_state.yi = params['y0']
@@ -133,7 +134,7 @@ else:
                     st.session_state.animation_html = html_buf
                     st.session_state.animation_frames = animation_frames
 
-        if "analyzed" in st.session_state:
+        if "analyzed" in st.session_state and st.session_state.analyzed == True:
             fig1 = st.session_state.fig1
             fig2 = st.session_state.fig2
             buf1 = st.session_state.buf1
@@ -169,7 +170,7 @@ else:
                 st.download_button(
                     label="Download Plot 1 as PNG",
                     data=buf1,
-                    file_name=f"concentration_at_target_point_{datetime.now().strftime("%Y%m%d_%H%M%S")}.png",
+                    file_name=f"concentration_at_target_point_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png",
                     mime="image/png",
                     use_container_width=True
                 )
@@ -179,7 +180,7 @@ else:
                 st.download_button(
                     label="Download Plot 2 as PNG",
                     data=buf2,
-                    file_name=f"concentration_at_y_across_x_{datetime.now().strftime("%Y%m%d_%H%M%S")}.png",
+                    file_name=f"concentration_at_y_across_x_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png",
                     mime="image/png",
                     use_container_width=True
                 )
@@ -224,7 +225,7 @@ else:
                             st.download_button(
                                 "Download GIF File",
                                 data=gif_bytes,
-                                file_name=f"animation_{datetime.now().strftime("%Y%m%d_%H%M%S")}.gif",
+                                file_name=f"animation_{datetime.now().strftime('%Y%m%d_%H%M%S')}.gif",
                                 mime="image/gif",
                                 use_container_width=True,
                                 type="secondary"

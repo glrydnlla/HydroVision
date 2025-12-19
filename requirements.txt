@@ -1,6 +1,7 @@
 streamlit
 numpy
 matplotlib
-plotly
+plotly==5.20.0
+kaleido==0.2.1
 imageio
 streamlit-option-menu
