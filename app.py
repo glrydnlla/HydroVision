@@ -188,6 +188,20 @@ else:
             if "animation_fig" in st.session_state:
                 st.plotly_chart(st.session_state.animation_fig)
 
+                st.write("\n\n")
+                st.subheader("What the map means")
+                st.write("This map represents a river seen from above. The horizontal axis (X-axis) shows the length of the river (in meters), while the vertical axis (Y-axis) shows the width of the river (in meters) from one side to the other. Each colored section corresponds to a specific area of the river.")
+
+                st.subheader("Color = Pollution Level")
+                st.write(f"The color bar on the right indicates the pollutant concentration measured in kilograms per cubic meter (kg/m{ss3}). Lighter colors represent lower pollution levels, while darker or brighter colors indicate higher concentrations of pollutants in the water.")
+
+                st.subheader("What the animation shows")
+                st.write("The animation illustrates how pollution spreads in the river over time. The pollutant is released from a source and then moves along the river flow, spreads sideways across the river width, and gradually becomes more diluted as it mixes with the surrounding water.")
+
+                st.subheader("How to use the controls & time")
+                st.write("You can press Play to run the simulation and Pause to stop it at any moment. To view a specific moment, pause the simulation first, then use the timeline slider to select the time. The time display shows how many seconds have passed since the pollutant was released.")
+
+
                 if "animation_html" in st.session_state:
                     # print(st.session_state.animation_html)
                     st.download_button(
