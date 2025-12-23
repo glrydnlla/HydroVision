@@ -47,6 +47,7 @@ else:
 
     if page == "Analyze":
         st.title("Analyze")
+        st.write("You can click the Show Tutorial button to display the tutorial and parameter explanation.")
         params = ui.render_input_panel()
         ss3 = "\u00B3"
         st.write("")
