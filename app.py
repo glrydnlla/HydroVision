@@ -83,7 +83,7 @@ else:
             diffusion = " Δt ≤ 1 / ( 2·(P/Δx² + R/Δy²) ) "
 
             if not stable:
-                st.error(f"Computed delta_t is unstable with the CFL value of {CFL} and delta t limit of {dt_diff_limit}. Adjust parameters. You can refer to the advection and diffusion stability formula below.\n\nAdvection (Courant–Friedrichs–Lewy condition):\n\n\t{advection}\n\nDiffusion stability:\n\n\t{diffusion}")
+                st.error(f"**Error!!**\n\nComputed delta_t is unstable with the CFL value of {CFL} and delta t limit of {dt_diff_limit}. Adjust parameters. You can refer to the advection and diffusion stability formula below.\n\nAdvection (Courant–Friedrichs–Lewy condition):\n\n\t{advection}\n\nDiffusion stability:\n\n\t{diffusion}")
                 st.session_state.analyzed = False
             else:
                 c[0, :, :] = np.ones_like(c[0, :, :]) * params.get('c_in', 0.1)
